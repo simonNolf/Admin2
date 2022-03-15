@@ -8,3 +8,10 @@ RUN apt install bind9 bind9utils dnsutils net-tools iputils-ping -y
 
 COPY named.conf /etc/bind
 COPY l2-2.ephec-ti.be /etc/bind
+
+#Ouverture du port 53 en UDP/TCP
+EXPOSE 53/udp
+EXPOSE 53/tcp
+
+# lancer la config bind
+CMD named -g
