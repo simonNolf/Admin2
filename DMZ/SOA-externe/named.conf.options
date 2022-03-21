@@ -1,0 +1,12 @@
+options {
+	directory "/var/cache/bind";
+
+	querylog yes;
+
+	listen-on { any; };
+	allow-query { any; };
+
+	listen-on-v6 { any; };
+    recursion no;
+    allow-transfer { none; };
+};
