@@ -8,8 +8,8 @@ $TTL	3600
 			86400		; Expire
 			600 )	    ; Negative Cache TTL
 
-;Nom de serveur faisant autoriter sur le domaine tl2-2.ephec-ti.be.
-l2-2.ephec-ti.be.      IN      NS      ns.l2-2.ephec-ti.be.
+;Nom de serveur faisant autoriter sur le domaine l2-2.ephec-ti.be.
+@      IN      NS      ns.l2-2.ephec-ti.be.
 
 
 ;Le nom de mon serveur assigner à son IP
