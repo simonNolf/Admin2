@@ -1,5 +1,5 @@
 # image à partir d'ubuntu 20.04
-FROM bind9:9.18
+FROM ubuntu:focal
 
 # Mettre à jour tous les packets
 RUN apt update && apt upgrade -y
