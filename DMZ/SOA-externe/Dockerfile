@@ -11,9 +11,5 @@ COPY named.conf.local /etc/bind
 COPY named.conf.options /etc/bind
 COPY db.l2-2.ephec-ti.be /etc/bind
 
-#Ouverture du port 53 en UDP/TCP
-EXPOSE 53/udp
-EXPOSE 53/tcp
-
 # lancer la config bind
 CMD named -g
