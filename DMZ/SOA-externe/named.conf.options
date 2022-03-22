@@ -1,12 +1,14 @@
 options {
 	directory "/var/cache/bind";
-
 	querylog yes;
 
+	# accepter toutes les requêtes
 	listen-on { any; };
 	allow-query { any; };
-
 	listen-on-v6 { any; };
+
+	# refuser la recursion
     recursion no;
+	# refuser tous transfert de zone
     allow-transfer { none; };
 };
