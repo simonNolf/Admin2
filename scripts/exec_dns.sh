@@ -1,1 +1,1 @@
-docker exec -ti dnsCT bash
+docker exec -ti dnsCT2 bash
