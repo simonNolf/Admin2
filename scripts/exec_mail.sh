@@ -1,1 +1,1 @@
-docker exec -ti mailCT2 bash
+docker exec -ti mailCT bash
