@@ -15,6 +15,7 @@ services:
     command: named -g
 
   mail:
+    build: ./MAIL
     ports:
       - 993:993
       - 143:143
