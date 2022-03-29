@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  soa-externe:
+    build: ./SOA-externe
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+    volumes:
+      - ./SOA-externe/named.conf:/etc/bind/named.conf
+      - ./SOA-externe/named.conf.local:/etc/bind/named.conf.local
+      - ./SOA-externe/named.conf.options:/etc/bind/named.conf.options
+      - ./SOA-externe/db.l2-2.ephec-ti.be:/etc/bind/db.l2-2.ephec-ti.be
+    container_name: soa-externe
+    command: named -g
+
+  mail:
+    ports:
+      - 993:993
+      - 143:143
+      - 995:995
+      - 110:110
+      - 25:25
+    container_name: mail
