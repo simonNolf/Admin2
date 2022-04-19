@@ -19,4 +19,4 @@ RUN mkdir /var/www/l2-2.ephec-ti.be
 
 # copier des fichier à affihcer contenant les pages web
 COPY /www/public/index.html /var/www/html/index.html
-COPY /www/b2b/index.html /var/www/html/b2b.l2-2.ephec-ti.be/index.html
+COPY /www/b2b/index.php /var/www/html/b2b.l2-2.ephec-ti.be/index.php
