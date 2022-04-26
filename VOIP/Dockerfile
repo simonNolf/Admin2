@@ -5,7 +5,7 @@ FROM debian:latest
 RUN apt-get update 
 RUN apt-get -y upgrade
 #install additional packages
-RUN apt-get -y install systemd vim nano dnsutils net-tools asterisk
+RUN apt-get -y install systemd vim nano dnsutils net-tools asterisk sip-dev
 #change timezone
 RUN echo "Europe/Brussels" | tee /etc/timezone
 #ports pour sip :
