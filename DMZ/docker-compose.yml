@@ -1,4 +1,4 @@
-version: '3'
+version: "2"
 
 services:
   soa-externe:
@@ -14,12 +14,9 @@ services:
     container_name: soa-externe
     command: named -g
 
-  mail:
-    build: ./MAIL
+  web-public:
+    build: ./Web-public/.
     ports:
-      - 993:993
-      - 143:143
-      - 995:995
-      - 110:110
-      - 25:25
-    container_name: mail
+      - 80:80
+      - 443:443
+    container_name: web
