@@ -10,10 +10,12 @@ RUN openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -keyout /et
 # Copie des fichiers à implémenter dans le container docker "web".
 COPY config/l2-2.ephec-ti.be.conf /etc/apache2/sites-available
 COPY config/b2b.l2-2.ephec-ti.be.conf /etc/apache2/sites-available
+COPY config/ssl.conf /etc/apache2/sites-available
 
 # lien entre sites-available et sitesenabled
 RUN ln -s /etc/apache2/sites-available/l2-2.ephec-ti.be.conf /etc/apache2/sites-enabled
 RUN ln -s /etc/apache2/sites-available/b2b.l2-2.ephec-ti.be.conf /etc/apache2/sites-enabled
+RUN ln -s /etc/apache2/sites-available/ssl.conf /etc/apache2/sites-enabled
 
 # Création des répertoire dans le container
 RUN mkdir /var/www/b2b.l2-2.ephec-ti.be
