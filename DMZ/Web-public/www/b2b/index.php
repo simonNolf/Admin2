@@ -2,7 +2,7 @@
 
 <?php
     # Connexion à la base de données
-    $db= mysqli_connect('176.96.231.179:3306','admin','Password','dbwoody') or die('Erreur de connection!');
+    $db= mysqli_connect('176.96.231.178:3306','admin','Password','dbwoody') or die('Erreur de connection!');
 ?>
 
 <html>
