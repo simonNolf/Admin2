@@ -14,3 +14,6 @@ projet d'administration des réseau 2 dans la carde des cours à l'EPHEC
 `sudo groupadd docker`
 
 `sudo gpasswd -a [user] docker`
+
+## Commandes docker-compose
+`docker-compose up -d`
