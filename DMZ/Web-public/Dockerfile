@@ -4,31 +4,34 @@ FROM php:7.2-apache
 RUN apt update -y && apt upgrade -y
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN apt install openssl
-RUN mkdir /etc/certificate
-RUN openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -keyout /etc/certificate/apache.key -out /etc/certificate/apache-certificate.crt -subj "/C=BE/ST=Braban-wallon/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=www.l2-1.ephec-ti.be"
+
+# Certificats pour le site www
+RUN openssl genrsa -out /etc/ssl/certs/www.key 2048
+RUN openssl req -new -sha256 -key /etc/ssl/certs/www.key -out /etc/ssl/certs/www.csr -subj "/C=BE/ST=Brabant-wallon/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=www.l2-2.ephec-ti.be"
+RUN openssl x509 -req -days 365 -in /etc/ssl/certs/www.csr -signkey /etc/ssl/certs/www.key -out /etc/ssl/certs/www.crt
+
+# Certificats pour le site b2b
+RUN openssl genrsa -out /etc/ssl/certs/b2b.key 2048
+RUN openssl req -new -sha256 -key /etc/ssl/certs/b2b.key -out /etc/ssl/certs/b2b.csr -subj "/C=BE/ST=Brabant-wallon/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=b2b.l2-2.ephec-ti.be"
+RUN openssl x509 -req -days 365 -in /etc/ssl/certs/b2b.csr -signkey /etc/ssl/certs/b2b.key -out /etc/ssl/certs/b2b.crt
 
 # Copie des fichiers à implémenter dans le container docker "web".
-COPY config/l2-2.ephec-ti.be.conf /etc/apache2/sites-available
+COPY config/www.l2-2.ephec-ti.be.conf /etc/apache2/sites-available
 COPY config/b2b.l2-2.ephec-ti.be.conf /etc/apache2/sites-available
-COPY config/ssl.conf /etc/apache2/sites-available
 
 # lien entre sites-available et sitesenabled
-RUN ln -s /etc/apache2/sites-available/l2-2.ephec-ti.be.conf /etc/apache2/sites-enabled
+RUN ln -s /etc/apache2/sites-available/www.l2-2.ephec-ti.be.conf /etc/apache2/sites-enabled
 RUN ln -s /etc/apache2/sites-available/b2b.l2-2.ephec-ti.be.conf /etc/apache2/sites-enabled
-RUN ln -s /etc/apache2/sites-available/ssl.conf /etc/apache2/sites-enabled
 
 # Création des répertoire dans le container
 RUN mkdir /var/www/b2b.l2-2.ephec-ti.be
-RUN mkdir /var/www/l2-2.ephec-ti.be
+RUN mkdir /var/www/www.l2-2.ephec-ti.be
 
 
-# copier des fichier à affihcer contenant les pages web
-COPY /www/public/index.html /var/www/html/index.html
-COPY /www/b2b/index.php /var/www/html/b2b.l2-2.ephec-ti.be/index.php
+# Copier des fichier à afficher contenant les pages web
+COPY /sites/www/index.html /var/www/www.l2-2.ephec-ti.be
+COPY /sites/b2b/index.php /var/www/b2b.l2-2.ephec-ti.be
 
 # SSL
 RUN a2enmod ssl
-RUN a2enmod headers
-RUN a2ensite ssl
-RUN a2enmod rewrite
-RUN service apache2 restart
+RUN service apache2 reload
