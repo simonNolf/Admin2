@@ -34,4 +34,4 @@ COPY /sites/b2b/index.php /var/www/b2b.l2-2.ephec-ti.be
 
 # SSL
 RUN a2enmod ssl
-RUN service apache2 reload
+RUN service apache2 start
