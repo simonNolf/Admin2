@@ -11,4 +11,8 @@ options {
     recursion no;
 	# refuser tous transfert de zone
     allow-transfer { none; };
+    
+  	dnssec-enable yes;
+	dnssec-validation yes;
+	dnssec-lookaside auto;
 };
