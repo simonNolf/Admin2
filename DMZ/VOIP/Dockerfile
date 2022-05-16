@@ -8,6 +8,9 @@ RUN apt-get -y upgrade
 RUN apt-get -y install systemd vim nano dnsutils net-tools asterisk
 #change timezone
 RUN echo "Europe/Brussels" | tee /etc/timezone
+EXPOSE 5060/UDP
+EXPOSE 5060/TCP
+EXPOSE 19000-20000/UDP
 #copy config files
 COPY config/sip.conf /etc/asterisk/sip.conf
 COPY config/extensions.conf /etc/asterisk/extensions.conf
