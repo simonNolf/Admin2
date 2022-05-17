@@ -16,5 +16,5 @@ COPY config/sip.conf /etc/asterisk/sip.conf
 COPY config/extensions.conf /etc/asterisk/extensions.conf
 COPY config/voicemail.conf /etc/asterisk/voicemail.conf
 #Run asterisk
-#ENTRYPOINT [ "/usr/sbin/asterisk", "-f" ]
+ENTRYPOINT [ "/usr/sbin/asterisk", "-f" ]
 #CMD ["asterisk", "-f"]
