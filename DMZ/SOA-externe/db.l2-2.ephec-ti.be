@@ -21,7 +21,7 @@ www	IN	A	176.96.231.179;
 
 ;Server Mail
 mail	IN	A	176.96.231.179;
-@	IN	MX	10	mail.l2-2.ephec-ti.be;
+@	IN	MX	10	mail.l2-2.ephec-ti.be.;
 
 ;Server VOIP
 sip	IN	A	176.96.231.179;
