@@ -2,9 +2,21 @@ version: "2"
 
 services:
 
+  soa-externe:
+    build: ./SOA-externe/.
+    ports:
+      - 53:53
+      - 953:953
+    container_name: dns
   web-public:
     build: ./Web-public/.
     ports:
       - 80:80
       - 443:443
     container_name: web
+  voip:
+    build: ./VOIP/.
+    ports:
+      - 5060:5060
+      - 19000-19500:19000-19500
+    container_name: voip
