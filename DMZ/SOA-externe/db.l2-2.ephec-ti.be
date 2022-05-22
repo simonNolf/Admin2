@@ -13,17 +13,17 @@ $TTL	3600
 
 
 ;Le nom de mon serveur assigner à son IP
-ns			IN	A	176.96.231.179;
+ns			IN	A	176.96.231.177;
 
 ;Server Web
-b2b	IN	A	176.96.231.179;
-www	IN	A	176.96.231.179;
+b2b	IN	A	176.96.231.177;
+www	IN	A	176.96.231.177;
 
 ;Server Mail
-mail	IN	A	176.96.231.179;
-@	IN	MX	10	mail.l2-2.ephec-ti.be.;
+mail	IN	A	176.96.231.177;
+@	IN	MX	10	mail.l2-2.ephec-ti.be;
 
 ;Server VOIP
-sip	IN	A	176.96.231.179;
+sip	IN	A	176.96.231.177;
 _sip._tcp	86400	IN	SRV	10	100	5060	sip
 _sip._udp	86400	IN	SRV	10	100	5060	sip
