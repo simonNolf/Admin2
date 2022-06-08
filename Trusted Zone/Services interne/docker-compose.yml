@@ -8,14 +8,7 @@ networks:
       config:
         - subnet: 192.168.0.0/24
           gateway: 192.168.0.1
-  direction_network:
-    # use a custom driver, with no options
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.5.0/24
-          gateway: 192.168.5.1
-  atelier_network:
+  secretaire_network:
     # use a custom driver, with no options
     ipam:
       driver: default
@@ -29,14 +22,14 @@ networks:
       config:
         - subnet: 192.168.2.0/24
           gateway: 192.168.2.1
-  commerciaux_network:
+  direction_network:
     # use a custom driver, with no options
     ipam:
       driver: default
       config:
         - subnet: 192.168.3.0/24
           gateway: 192.168.3.1
-  secretaire_network:
+  atelier_network:
     # use a custom driver, with no options
     ipam:
       driver: default
@@ -45,16 +38,16 @@ networks:
           gateway: 192.168.4.1
 
 services:
-  resolver:
-    build:
-      context: ./resolver
-      dockerfile: Dockerfile
-    networks:
-      local_network:
-        ipv4_address: 192.168.0.5
-    volumes:
-      - ./resolver/named.conf:/etc/bind/named.conf
-    container_name: resolver_container
+  # resolver:
+  #   build:
+  #     context: ./resolver
+  #     dockerfile: Dockerfile
+  #   networks:
+  #     local_network:
+  #       ipv4_address: 192.168.0.5
+  #   volumes:
+  #     - ./resolver/named.conf:/etc/bind/named.conf
+  #   container_name: resolver_container
 
   soa_interne:
     build:
