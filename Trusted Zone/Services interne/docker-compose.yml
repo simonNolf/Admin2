@@ -29,20 +29,6 @@ services:
 
     container_name: soa_interne_container
 
-  intranet_woody:
-    build:
-      context: ./intranet
-      dockerfile: Dockerfile
-
-    networks:
-      local_network:
-        ipv4_address: 192.168.0.3
-    ports:
-      - "8080:80"
-    volumes:
-      - ./intranet/intranet.conf:/etc/apache2/sites-available/intranet.conf
-      - ./intranet/index.php:/var/www/html/index.php
-    container_name: intranet_container
   samba:
     build:
       context: ./samba
@@ -89,6 +75,21 @@ services:
       secretaire_network:
         ipv4_address: 192.168.1.2
     container_name: secretaire_container
+
+  intranet_woody:
+      build:
+        context: ./intranet
+        dockerfile: Dockerfile
+
+      networks:
+        local_network:
+          ipv4_address: 192.168.0.3
+      ports:
+        - "8080:80"
+      volumes:
+        - ./intranet/intranet.conf:/etc/apache2/sites-available/intranet.conf
+        - ./intranet/index.php:/var/www/html/index.php
+      container_name: intranet_container
 
 networks:
   local_network:
