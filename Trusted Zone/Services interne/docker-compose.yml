@@ -12,9 +12,9 @@ services:
       - ./resolver/named.conf:/etc/bind/named.conf
     container_name: resolver_container
 
-  SOA_interne:
+  soa_interne:
     build:
-      context: ./SOA_interne
+      context: ./soa_interne
       dockerfile: Dockerfile
 
     networks:
@@ -29,9 +29,9 @@ services:
 
     container_name: soa_interne_container
 
-  Samba:
+  samba:
     build:
-      context: ./Samba
+      context: ./samba
       dockerfile: Dockerfile
     networks:
       local_network:
