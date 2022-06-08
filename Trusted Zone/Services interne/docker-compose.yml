@@ -1,5 +1,49 @@
 version: "2.2" # optional since v1.27.0
 
+networks:
+  local_network:
+    # use the bridge driver, but enable IPv6
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/24
+          gateway: 192.168.0.1
+  direction_network:
+    # use a custom driver, with no options
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.5.0/24
+          gateway: 192.168.5.1
+  atelier_network:
+    # use a custom driver, with no options
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24
+          gateway: 192.168.1.1
+  compta_network:
+    # use a custom driver, with no options
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.2.0/24
+          gateway: 192.168.2.1
+  commerciaux_network:
+    # use a custom driver, with no options
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.3.0/24
+          gateway: 192.168.3.1
+  secretaire_network:
+    # use a custom driver, with no options
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.4.0/24
+          gateway: 192.168.4.1
+
 services:
   resolver:
     build:
@@ -91,46 +135,3 @@ services:
         - ./intranet/index.php:/var/www/html/index.php
       container_name: intranet_container
 
-networks:
-  local_network:
-    # use the bridge driver, but enable IPv6
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.0.0/24
-          gateway: 192.168.0.1
-  direction_network:
-    # use a custom driver, with no options
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.5.0/24
-          gateway: 192.168.5.1
-  atelier_network:
-    # use a custom driver, with no options
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.1.0/24
-          gateway: 192.168.1.1
-  compta_network:
-    # use a custom driver, with no options
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.2.0/24
-          gateway: 192.168.2.1
-  commerciaux_network:
-    # use a custom driver, with no options
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.3.0/24
-          gateway: 192.168.3.1
-  secretaire_network:
-    # use a custom driver, with no options
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.4.0/24
-          gateway: 192.168.4.1
