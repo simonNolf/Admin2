@@ -14,7 +14,7 @@ services:
 
   SOA_interne:
     build:
-      context: ./soa_interne
+      context: ./SOA_interne
       dockerfile: Dockerfile
 
     networks:
@@ -31,7 +31,7 @@ services:
 
   Samba:
     build:
-      context: ./samba
+      context: ./Samba
       dockerfile: Dockerfile
     networks:
       local_network:
