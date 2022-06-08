@@ -8,13 +8,6 @@ networks:
       config:
         - subnet: 192.168.0.0/24
           gateway: 192.168.0.1
-  direction_network:
-    # use a custom driver, with no options
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.5.0/24
-          gateway: 192.168.5.1
   secretaire_network:
     # use a custom driver, with no options
     ipam:
