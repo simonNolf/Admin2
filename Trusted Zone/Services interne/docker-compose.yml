@@ -38,16 +38,16 @@ networks:
           gateway: 192.168.4.1
 
 services:
-  resolver:
-    build:
-      context: ./resolver
-      dockerfile: Dockerfile
-    networks:
-      local_network:
-        ipv4_address: 192.168.0.5
-    volumes:
-      - ./resolver/named.conf:/etc/bind/named.conf
-    container_name: resolver_container
+  # resolver:
+  #   build:
+  #     context: ./resolver
+  #     dockerfile: Dockerfile
+  #   networks:
+  #     local_network:
+  #       ipv4_address: 192.168.0.5
+  #   volumes:
+  #     - ./resolver/named.conf:/etc/bind/named.conf
+  #   container_name: resolver_container
 
   soa_interne:
     build:
