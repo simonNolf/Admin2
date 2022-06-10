@@ -1,5 +1,4 @@
 version: "2.2" # optional since v1.27.0
-
 services:
   resolver:
     build:
@@ -21,8 +20,9 @@ services:
       local_network:
         ipv4_address: 192.168.0.2
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "172.17.0.1:53:53/tcp"
+      - "172.17.0.1:53:53/udp"
+      - "10000:10000/tcp"
     volumes:
       - ./soa_interne/named.conf:/etc/bind/named.conf
       - ./soa_interne/db.intranet.woody:/etc/bind/db.intranet.woody

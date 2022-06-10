@@ -1,7 +1,0 @@
-192.168.1.0 -- secretariat
-
-192.168.2.0 -- Comptabilité
-
-192.168.3.0 -- direction
-
-192.168.4.0 -- atelier
