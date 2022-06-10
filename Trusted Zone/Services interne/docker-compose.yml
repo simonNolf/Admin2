@@ -145,7 +145,6 @@ services:
     build:
       context: ./soa_interne
       dockerfile: Dockerfile
-
     networks:
       local_network:
         ipv4_address: 192.168.0.1
@@ -158,7 +157,6 @@ services:
     build:
       context: ./intranet
       dockerfile: Dockerfile
-
     networks:
       local_network:
         ipv4_address: 192.168.0.3
