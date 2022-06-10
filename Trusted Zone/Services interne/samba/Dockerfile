@@ -1,3 +1,5 @@
+FROM ubuntu:latest
+
 RUN apt update -y
 RUN apt apgrade -y
 RUN apt-get update 
