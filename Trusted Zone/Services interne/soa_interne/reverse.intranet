@@ -1,0 +1,15 @@
+$ORIGIN 0.168.192.in-addr.arpa.
+$TTL 86400 ; 1 day
+@ IN SOA ns.intranet.woodytoys. admin.l2-2.ephec-ti.be. (
+        2 ; serial
+        43200 ; refresh (12 hours)
+        3600 ; retry time in case of a problem (1 hours)
+        604800 ; expiration time (1 weeks)
+        86400 ; minimum (1 day)
+ )
+;
+@    IN   NS    ns.intranet.m1-2.ephec-ti.be.
+
+1		IN     PTR		ns.intranet.woodytoys.
+3		IN     PTR		www.intranet.woodytoys.
+4		IN	   PTR		samba.intranet.woodytoys.
