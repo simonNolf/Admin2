@@ -9,5 +9,6 @@ RUN apt-get install -y net-tools
 RUN apt-get install -y nano
 RUN apt install wget -y
 RUN apt install lynx -y
+RUN apt install -y smbclient
 
 CMD tail -f /dev/null
