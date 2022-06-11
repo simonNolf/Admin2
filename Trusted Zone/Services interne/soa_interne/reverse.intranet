@@ -8,7 +8,7 @@ $TTL 86400 ; 1 day
         86400 ; minimum (1 day)
  )
 ;
-@    IN   NS    ns.intranet.l2-2.ephec-ti.be.
+@    IN   NS    ns.intranet.woodytoys.
 
 1		IN     PTR		ns.intranet.woodytoys.
 3		IN     PTR		www.intranet.woodytoys.
