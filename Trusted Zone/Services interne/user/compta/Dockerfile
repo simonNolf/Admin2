@@ -7,6 +7,7 @@ RUN apt-get install -y dnsutils
 RUN apt-get install -y iputils-ping
 RUN apt-get install -y net-tools
 RUN apt-get install -y nano
+RUN apt install wget
 
 
 CMD tail -f /dev/null

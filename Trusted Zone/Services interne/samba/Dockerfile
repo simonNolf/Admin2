@@ -14,4 +14,7 @@ RUN apt-get install smbclient -y
 RUN apt install cifs-utils -y 
 RUN apt install lynx -y 
 
+COPY ./smb.conf /etc/samba/smb.conf
+COPY ./shares.conf /etc/samba/shares.conf
+
 CMD tail -f /dev/null
