@@ -180,8 +180,8 @@ services:
       context: ./user/secretariat
       dockerfile: Dockerfile
     networks:
-      net_Secretariat:
-        ipv4_address: 198.168.1.2
+      local_network:
+        ipv4_address: 198.168.0.101
     container_name: secretariat
 
   compta:
