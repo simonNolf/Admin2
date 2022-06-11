@@ -181,7 +181,7 @@ services:
       dockerfile: Dockerfile
     networks:
       local_network:
-        ipv4_address: 198.168.0.101
+        ipv4_address: 192.168.0.101
     container_name: secretariat
 
   compta:
@@ -190,7 +190,7 @@ services:
       dockerfile: Dockerfile
     networks:
       net_Compta:
-        ipv4_address: 198.168.2.2
+        ipv4_address: 192.168.2.2
     container_name: compta
 
   direction:
@@ -199,7 +199,7 @@ services:
       dockerfile: Dockerfile
     networks:
       net_Direction:
-        ipv4_address: 198.168.3.2
+        ipv4_address: 192.168.3.2
     container_name: direction
 
   atelier:
@@ -208,7 +208,7 @@ services:
       dockerfile: Dockerfile
     networks:
       net_Atelier:
-        ipv4_address: 198.168.4.2
+        ipv4_address: 192.168.4.2
     container_name: atelier
 
 networks:
@@ -223,26 +223,26 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 198.168.1.0/24
-          gateway: 198.168.1.1
+        - subnet: 192.168.1.0/24
+          gateway: 192.168.1.1
 
   net_Compta:
     ipam:
       driver: default
       config:
-        - subnet: 198.168.2.0/24
-          gateway: 198.168.2.1
+        - subnet: 192.168.2.0/24
+          gateway: 192.168.2.1
 
   net_Direction:
     ipam:
       driver: default
       config:
-        - subnet: 198.168.3.0/24
-          gateway: 198.168.3.1
+        - subnet: 192.168.3.0/24
+          gateway: 192.168.3.1
 
   net_Atelier:
     ipam:
       driver: default
       config:
-        - subnet: 198.168.4.0/24
-          gateway: 198.168.4.1
+        - subnet: 192.168.4.0/24
+          gateway: 192.168.4.1
