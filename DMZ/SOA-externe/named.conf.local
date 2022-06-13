@@ -1,4 +1,4 @@
 zone "l2-2.ephec-ti.be" {
     type master;
-    file "/etc/bind/db.l2-2.ephec-ti.be";
+    file "/etc/bind/db.l2-2.ephec-ti.be.signed";
 };

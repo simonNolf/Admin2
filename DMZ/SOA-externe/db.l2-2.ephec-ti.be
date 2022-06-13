@@ -27,3 +27,6 @@ mail	IN	A	176.96.231.177;
 sip	IN	A	176.96.231.177;
 _sip._tcp	86400	IN	SRV	10	100	5060	sip
 _sip._udp	86400	IN	SRV	10	100	5060	sip
+
+$INCLUDE "/etc/bind/keys/l2-2.ephec-ti.be.zsk.key" ;
+$INCLUDE "/etc/bind/keys/l2-2.ephec-ti.be.ksk.key" ;
