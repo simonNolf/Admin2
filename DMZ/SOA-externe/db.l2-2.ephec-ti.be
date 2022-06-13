@@ -22,7 +22,8 @@ www	IN	A	176.96.231.177;
 ;Server Mail
 mail	IN	A	176.96.231.177;
 @	IN	MX	10	mail.l2-2.ephec-ti.be;
-@               IN     TXT             "v=spf1 a mx ip4:176.96.231.177 ~all"
+@   IN  TXT "v=spf1 include:mail.l2-2.ephec-ti.be ip4:176.96.231.177 -all"
+_dmarc          IN  TXT "v=DMARC1; p=none; pct=100; rua=mailto:dmarc-reports@l2-2.ephec-ti.be"
 
 ;Server VOIP
 sip	IN	A	176.96.231.177;
