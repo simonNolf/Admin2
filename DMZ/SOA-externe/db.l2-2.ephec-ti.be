@@ -2,11 +2,11 @@ $ORIGIN l2-2.ephec-ti.be.
 $TTL	3600
 @	IN	SOA	ns.l2-2.ephec-ti.be.   root.l2-2.ephec-ti.be. (
 
-	1	; Serial
-	3600	; Refresh
-	600	; Retry
-	86400	; Expire
-	600 ) ; Negative Cache TTL
+    2001062501 ; serial
+    21600      ; refresh after 6 hours
+    3600       ; retry after 1 hour
+	604800     ; expire after 1 week
+	86400 )    ; minimum TTL of 1 day
 
 ;Nom de serveur faisant autoriter sur le domaine l2-2.ephec-ti.be.
 @      IN      NS      ns.l2-2.ephec-ti.be.
