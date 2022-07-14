@@ -13,20 +13,18 @@ $TTL	3600
 
 
 ;Le nom de mon serveur assigner à son IP
-ns			IN	A	188.166.60.206;
+ns			IN	A	176.96.231.177;
 
 ;Server Web
-b2b	IN	A	188.166.60.206;
-www	IN	A	188.166.60.206;
+b2b	IN	A	176.96.231.177;
+www	IN	A	176.96.231.177;
 
 ;Server Mail
-mail	IN	A	188.166.60.206;
+mail	IN	A	176.96.231.177;
 @	IN	MX	10	mail.l2-2.ephec-ti.be;
-@   IN  TXT "v=spf1 include:mail.l2-2.ephec-ti.be ip4:176.96.231.177 -all"
-_dmarc          IN  TXT "v=DMARC1; p=none; pct=100; rua=mailto:dmarc-reports@l2-2.ephec-ti.be"
 
 ;Server VOIP
-sip	IN	A	188.166.60.206;
+sip	IN	A	176.96.231.177;
 _sip._tcp	86400	IN	SRV	10	100	5060	sip
 _sip._udp	86400	IN	SRV	10	100	5060	sip
 

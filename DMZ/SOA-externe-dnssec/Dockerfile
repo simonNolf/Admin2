@@ -24,3 +24,4 @@ EXPOSE 953
 # lancer la config bind
 CMD named -g
 
+

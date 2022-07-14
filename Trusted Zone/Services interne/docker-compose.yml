@@ -1,4 +1,4 @@
-version: "2.2" # optional since v1.27.0
+version: "2.2"
 
 services:
   resolver:
@@ -8,26 +8,30 @@ services:
     networks:
       local_network:
         ipv4_address: 192.168.0.5
-    volumes:
-      - ./resolver/named.conf:/etc/bind/named.conf
-    container_name: resolver_container
+    container_name: resolv
 
   soa_interne:
     build:
       context: ./soa_interne
       dockerfile: Dockerfile
-
     networks:
       local_network:
-        ipv4_address: 192.168.0.2
+        ipv4_address: 192.168.0.1
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-    volumes:
-      - ./soa_interne/named.conf:/etc/bind/named.conf
-      - ./soa_interne/db.intranet.woody:/etc/bind/db.intranet.woody
+    container_name: soa
 
-    container_name: soa_interne_container
+  intranet:
+    build:
+      context: ./intranet
+      dockerfile: Dockerfile
+    networks:
+      local_network:
+        ipv4_address: 192.168.0.3
+    ports:
+      - "8080:80"
+    container_name: intranet
 
   samba:
     build:
@@ -40,88 +44,72 @@ services:
       - "139:139"
     container_name: samba_container
 
-  direction:
+  secretariat:
     build:
-      context: ./user/direction
+      context: ./user/secretariat
       dockerfile: Dockerfile
     networks:
-      direction_network:
-        ipv4_address: 192.168.3.2
-    container_name: direction_container
-
-  atelier:
-    build:
-      context: ./user/atelier
-      dockerfile: Dockerfile
-    networks:
-      atelier_network:
-        ipv4_address: 192.168.4.2
-    container_name: atelier_container
+      local_network:
+        ipv4_address: 192.168.0.101
+    container_name: secretariat
 
   compta:
     build:
       context: ./user/compta
       dockerfile: Dockerfile
     networks:
-      compta_network:
-        ipv4_address: 192.168.2.2
-    container_name: compta_container
+      local_network:
+        ipv4_address: 192.168.0.102
+    container_name: compta
 
-  secretariat:
+  direction:
     build:
-      context: ./user/secretariat
+      context: ./user/direction
       dockerfile: Dockerfile
     networks:
-      secretaire_network:
-        ipv4_address: 192.168.1.2
-    container_name: secretaire_container
+      local_network:
+        ipv4_address: 192.168.0.103
+    container_name: direction
 
-  intranet_woody:
-      build:
-        context: ./intranet
-        dockerfile: Dockerfile
-
-      networks:
-        local_network:
-          ipv4_address: 192.168.0.3
-      ports:
-        - "8080:80"
-      volumes:
-        - ./intranet/intranet.conf:/etc/apache2/sites-available/intranet.conf
-        - ./intranet/index.php:/var/www/html/index.php
-      container_name: intranet_container
+  atelier:
+    build:
+      context: ./user/atelier
+      dockerfile: Dockerfile
+    networks:
+      local_network:
+        ipv4_address: 192.168.0.104
+    container_name: atelier
 
 networks:
   local_network:
-    # use the bridge driver, but enable IPv6
     ipam:
       driver: default
       config:
         - subnet: 192.168.0.0/24
-          gateway: 192.168.0.1
-  secretaire_network:
-    # use a custom driver, with no options
+          gateway: 192.168.0.254
+
+  net_Secretariat:
     ipam:
       driver: default
       config:
         - subnet: 192.168.1.0/24
           gateway: 192.168.1.1
-  compta_network:
-    # use a custom driver, with no options
+
+  net_Compta:
     ipam:
       driver: default
       config:
         - subnet: 192.168.2.0/24
           gateway: 192.168.2.1
-  direction_network:
-    # use a custom driver, with no options
+
+  net_Direction:
     ipam:
       driver: default
       config:
         - subnet: 192.168.3.0/24
           gateway: 192.168.3.1
-  atelier_network:
-    # use a custom driver, with no options
+
+  net_Atelier:
     ipam:
       driver: default
       config:

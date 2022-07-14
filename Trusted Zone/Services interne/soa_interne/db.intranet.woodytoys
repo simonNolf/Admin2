@@ -1,0 +1,17 @@
+$ORIGIN intranet.woodytoys.
+$TTL 86400 ; 1 day
+@ IN SOA ns.intranet.woodytoys. admin.l2-2.ephec-ti.be. (
+        2       ; serial
+        43200   ; refresh (12 hours)
+        3600    ; retry time in case of a problem (1 hours)
+        604800  ; expiration time (1 weeks)
+        86400   ; minimum (1 day)
+ )
+;
+@               IN      NS      ns.intranet.woodytoys.
+
+;
+ns              IN      A       192.168.0.1
+
+www             IN      A       192.168.0.3
+samba           IN      A       192.168.0.4
