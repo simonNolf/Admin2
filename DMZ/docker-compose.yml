@@ -5,8 +5,10 @@ services:
   soa-externe:
     build: ./SOA-externe/.
     ports:
-      - 53:53
-      - 953:953
+      - 53:53/udp
+      - 53:53/tcp
+      - 953:953/udp
+      - 953:953/tcp
     container_name: dns
   web-public:
     build: ./Web-public/.
