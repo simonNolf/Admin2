@@ -3,7 +3,7 @@ FROM php:7.2-apache
 # Ajout de différents packages.
 RUN apt update -y && apt upgrade -y
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
-RUN apt install openssl
+RUN apt install -y openssl certbot python3-certbot-apache
 
 # Certificats pour le site www
 RUN openssl genrsa -out /etc/ssl/certs/www.key 2048
