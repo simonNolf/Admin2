@@ -1,7 +1,7 @@
 version: "3.3"
 
 services:
-  soa-externe:
+  dns:
     build: ./SOA-externe/.
     ports:
       - 53:53/udp
@@ -16,7 +16,7 @@ services:
        delay: 20s
        window: 60s
   
-  web-public:
+  web:
     build: ./Web-public/.
     ports:
       - 80:80
@@ -35,17 +35,20 @@ services:
       - 19000-19250:19000-19250
     container_name: voip   
     deploy:
+     resources:
+       limits:
+         memory: 400M
      restart_policy:
        condition: any
        delay: 20s
        window: 60s
 
   mail:
-    build: ./Mail/.
+    build: ./Mail
     ports:
-      - 25:25   # SMTP
-      - 110:110 # IMAP
-      - 143:143 # POP
+      - 25:25/tcp   # SMTP
+      - 110:110/tcp # IMAP
+      - 143:143/tcp # POP
     container_name: mail
     deploy:
       restart_policy:

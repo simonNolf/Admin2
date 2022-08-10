@@ -1,16 +1,46 @@
+# See /usr/share/postfix/main.cf.dist for a commented, more complete version
+
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+
+readme_directory = no
+
+# See http://www.postfix.org/COMPATIBILITY_README.html -- default to 2 on
+# fresh installs.
+compatibility_level = 2
+
+
+
+
+smtpd_relay_restrictions = permit_mynetworks, reject
+
+
 # l'ordre des paramètres n'a pas d'importance
 # si un paramètre est indiqué 2 fois c'est le dernier qui est retenu
 
-myhostname = mail.l2-2.ephec-ti.be                                      # Nom d'hôte du système de messagerie sur internet
-mydomain = l2-2.ephec-ti.be                                             # Nom de domaine du système de messagerie sur internet
-myorigin = $mydomain                                                    # Le nom de domaine d'où provient le mail posté localement
-mydestination = $myhostname localhost.$mydomain localhost $mydomain     # Liste des domaines délivré via le transport de livraison des mails
-smtpd_banner = $myhostname ESMTP $mail_name                             # Bannière SMTP de salutation après le code 220
-mynetworks = 192.168.0.0/24 127.0.0.0/8 [::1]/128                       # Liste des clients distants SMTP fiable
+# Nom d'hôte du système de messagerie sur internet
+myhostname = mail.l2-2.ephec-ti.be
+#Nom de domaine du système de messagerie sur internet
+mydomain = l2-2.ephec-ti.be
+#Nom de domaine du système de messagerie sur internet
+myorigin = $mydomain      
+#Nom de domaine du système de messagerie sur internet
+mydestination = $myhostname localhost.$mydomain localhost $mydomain    
+#Nom de domaine du système de messagerie sur internet
+smtpd_banner = $myhostname ESMTP $mail_name  
+#Nom de domaine du système de messagerie sur internet 
+mynetworks = 192.168.0.0/24 127.0.0.0/8 [::1]/128    
 maillog_file=/var/log/postfix.log
-
-alias_maps = hash:/etc/aliases                                          # Base de données d'alias utilisées pour la livraison locale
-alias_database = hash:/etc/aliases                                      # Permet d'update la base de données d'alias avec "newaliases"
-mailbox_size_limit = 0                                                  # Taille maximale des mailbox local ou dossier maildir
-recipient_delimiter = +                                                 # Caractère qui sépare la partie locale de l'adresse mail et le nom d'utilisateur de son extension
-inet_interfaces = all                                                   # Interface réseau part lesquelles le système de messagerie reçoit les mails
+debug_peer_level = 5
+biff = no
+#Nom de domaine du système de messagerie sur internet
+alias_maps = hash:/etc/aliases  
+#Nom de domaine du système de messagerie sur internet 
+alias_database = hash:/etc/aliases  
+#Nom de domaine du système de messagerie sur internet 
+mailbox_size_limit = 0     
+#Nom de domaine du système de messagerie sur internet 
+recipient_delimiter = + 
+#Nom de domaine du système de messagerie sur internet
+inet_interfaces = all   
+inet_protocols = all
