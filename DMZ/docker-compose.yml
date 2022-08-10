@@ -50,6 +50,9 @@ services:
       - 110:110/tcp # IMAP
       - 143:143/tcp # POP
     container_name: mail
+    volumes:
+      - ./Mail/postfix/main.cf:/etc/postfix/main.cf
+      - ./Mail/dovecot/dovecot.conf:/etc/dovecot/dovecot.conf
     deploy:
       restart_policy:
         condition: any

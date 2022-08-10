@@ -11,4 +11,9 @@ RUN apt install wget -y
 RUN apt install lynx -y
 RUN apt install -y smbclient
 
+RUN adduser atelier
+RUN touch /var/mail/atelier
+
+COPY .muttrc /home/atelier/
+
 CMD tail -f /dev/null

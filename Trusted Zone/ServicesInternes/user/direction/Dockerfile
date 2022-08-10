@@ -11,5 +11,9 @@ RUN apt install wget -y
 RUN apt install lynx -y
 RUN apt install -y smbclient
 
+RUN adduser direction
+RUN touch /var/mail/direction
+
+COPY .muttrc /home/direction/
 
 CMD tail -f /dev/null
