@@ -1,7 +1,6 @@
-version: "2"
+version: "3.3"
 
 services:
-
   soa-externe:
     build: ./SOA-externe/.
     ports:
@@ -10,15 +9,46 @@ services:
       - 953:953/udp
       - 953:953/tcp
     container_name: dns
+    deploy:
+     # If the container Exit docker try to restart it 20s after and retry each minute
+     restart_policy:
+       condition: any
+       delay: 20s
+       window: 60s
+  
   web-public:
     build: ./Web-public/.
     ports:
       - 80:80
       - 443:443
     container_name: web
+    deploy:
+     restart_policy:
+       condition: any
+       delay: 20s
+       window: 60s
+  
   voip:
     build: ./VOIP/.
     ports:
       - 5060:5060
       - 19000-19250:19000-19250
-    container_name: voip
+    container_name: voip   
+    deploy:
+     restart_policy:
+       condition: any
+       delay: 20s
+       window: 60s
+
+  mail:
+    build: ./Mail/.
+    ports:
+      - 25:25   # SMTP
+      - 110:110 # IMAP
+      - 143:143 # POP
+    container_name: mail
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 20s
+        window: 60s
