@@ -16,4 +16,4 @@ RUN touch /var/mail/atelier
 
 COPY .muttrc /home/atelier/
 
-CMD tail -f /dev/null
+CMD sleep infinity

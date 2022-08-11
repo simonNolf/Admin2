@@ -1,8 +1,7 @@
 CREATE DATABASE dbwoody;
 
-CREATE USER admin IDENTIFIED WITH mysql_native_password BY 'Password';
-
-GRANT ALL PRIVILEGES ON dbwoody.* TO 'admin'@'%';
+REVOKE ALL PRIVILEGES ON *.* FROM website@localhost;
+GRANT SELECT,INSERT ON dbwoody.* FROM website@localhost;
 
 USE dbwoody;
 

@@ -16,4 +16,4 @@ RUN touch /var/mail/direction
 
 COPY .muttrc /home/direction/
 
-CMD tail -f /dev/null
+CMD sleep infinity
