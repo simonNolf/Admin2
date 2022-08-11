@@ -1,0 +1,26 @@
+version: '3.3'
+
+secrets:
+  database_root_password:
+    external: true
+  database_website_password:
+    external: true
+    
+services:
+
+  database:
+    image: mysql:latest
+    volumes:
+      - ./database/:/docker-entrypoint-initdb.d/
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    secrets:
+      - database_root_password
+      - database_website_password
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/database_root_password
+      MYSQL_USER: website
+      MYSQL_PASSWORD_FILE: /run/secrets/database_website_password
+
+
