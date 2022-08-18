@@ -31,8 +31,8 @@ services:
   voip:
     build: ./VOIP/.
     ports:
-      - 5060:5060
-      - 19000-19250:19000-19250
+      - 5060:5060/udp
+      - 19000-19250:19000-19250/udp
     container_name: voip   
     deploy:
      resources:
