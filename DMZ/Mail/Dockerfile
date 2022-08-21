@@ -16,8 +16,17 @@ RUN adduser atelier
 RUN adduser direction
 RUN adduser secretariat
 RUN adduser compta
+RUN adduser commerciaux
 
 COPY ./mailbox/* /var/mail/
+
+RUN chown contact /var/mail/contact
+RUN chown atelier /var/mail/atelier
+RUN chown direction /var/mail/direction
+RUN chown secretariat /var/mail/secretariat
+RUN chown compta /var/mail/compta
+RUN chown commerciaux /var/mail/commerciaux
+
 
 RUN service postfix start
 RUN service dovecot start

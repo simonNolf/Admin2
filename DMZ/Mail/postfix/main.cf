@@ -12,7 +12,6 @@ compatibility_level = 2
 
 
 
-smtpd_relay_restrictions = permit_mynetworks, reject
 
 
 # l'ordre des paramètres n'a pas d'importance
@@ -29,7 +28,8 @@ mydestination = $myhostname localhost.$mydomain localhost $mydomain
 #Nom de domaine du système de messagerie sur internet
 smtpd_banner = $myhostname ESMTP $mail_name  
 #Nom de domaine du système de messagerie sur internet 
-mynetworks = 192.168.0.0/24 127.0.0.0/8 [::1]/128    
+mynetworks = 192.168.0.0/24 127.0.0.0/8 [::1]/128 0.0.0.0/0
+smtpd_relay_restrictions = permit_mynetworks, reject
 maillog_file=/var/log/postfix.log
 debug_peer_level = 5
 biff = no

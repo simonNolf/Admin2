@@ -21,9 +21,9 @@ www	IN	A	188.166.60.206;
 
 ;Server Mail
 mail	IN	A	188.166.60.206;
-@	IN	MX	10	mail.l2-2.ephec-ti.be;
-@   IN  TXT "v=spf1 include:mail.l2-2.ephec-ti.be ip4:188.166.60.206 -all"
-_dmarc          IN  TXT "v=DMARC1; p=none; pct=100; rua=mailto:dmarc-reports@l2-2.ephec-ti.be"
+@	IN	MX	10	mail;
+@	IN 	TXT 	"v=spf1 ip4:188.166.60.206 -all";
+;_dmarc          IN  TXT "v=DMARC1; p=none; pct=100; rua=mailto:dmarc-reports@l2-2.ephec-ti.be"
 
 ;Server VOIP
 sip	IN	A	188.166.60.206;
