@@ -11,4 +11,7 @@ RUN apt install wget -y
 RUN apt install lynx -y
 RUN apt install -y smbclient
 
+RUN adduser commerciaux
+COPY .muttrc /home/commerciaux
+
 CMD sleep infinity

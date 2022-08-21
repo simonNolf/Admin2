@@ -10,5 +10,7 @@ RUN apt-get install -y nano
 RUN apt install wget -y
 RUN apt install -y smbclient
 
+RUN adduser compta
+COPY .muttrc /home/compta
 
 CMD sleep infinity

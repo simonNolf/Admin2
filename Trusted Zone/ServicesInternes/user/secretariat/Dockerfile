@@ -12,5 +12,7 @@ RUN apt install lynx -y
 RUN apt install lynx -y
 RUN apt install -y smbclient
 
+RUN adduser secretariat
+COPY .muttrc /home/secretariat
 
 CMD sleep infinity
