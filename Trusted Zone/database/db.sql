@@ -1,7 +1,6 @@
 CREATE DATABASE dbwoody;
 
-REVOKE ALL PRIVILEGES ON *.* FROM website@localhost;
-GRANT SELECT,INSERT ON dbwoody.* FROM website@localhost;
+GRANT SELECT,INSERT ON dbwoody.* TO 'website'@'%';
 
 USE dbwoody;
 

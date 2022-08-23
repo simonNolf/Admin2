@@ -9,7 +9,7 @@ services:
       - ./database/:/docker-entrypoint-initdb.d/
     command: --default-authentication-plugin=mysql_native_password
     ports:
-      - 3306:3306
+      - 3306:3306/tcp
     environment:
       MYSQL_ROOT_PASSWORD: Password
       MYSQL_USER: website
