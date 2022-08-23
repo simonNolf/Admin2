@@ -1,10 +1,10 @@
 version: '3.3'
 
 secrets:
-  database_root_password:
-    external: true
-  database_website_password:
-    external: true
+  root_password:
+    file: ./database/root_password.txt
+  website_password:
+    file: ./database/website_password.txt
 
 services:
 
@@ -12,16 +12,99 @@ services:
     image: mysql:latest
     volumes:
       - ./database/:/docker-entrypoint-initdb.d/
-      - ./entrypoint_pwd.sh:/entrypoint_pwd.sh
-    entrypoint: ./entrypoint_pwd.sh
     command: --default-authentication-plugin=mysql_native_password
     ports:
-      - 3306:3306
+      - 3306:3306/tcp
     secrets:
-      - database_root_password
-      - database_website_password
+      - root_password
+      - website_password
     environment:
-      MYSQL_ROOT_PASSWORD: replace_in_entrypoint
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/root_password
       MYSQL_USER: website
-      MYSQL_PASSWORD: replace_in_entrypoint
+      MYSQL_PASSWORD_FILE: /run/secrets/website_password
     container_name: database
+
+  resolver:
+    build:
+      context: ./ServicesInternes/resolver
+      dockerfile: Dockerfile
+    networks:
+      local_network:
+        ipv4_address: 192.168.0.5
+    container_name: resolv
+
+  soa_interne:
+    build:
+      context: ./ServicesInternes/soa_interne
+      dockerfile: Dockerfile
+    networks:
+      local_network:
+        ipv4_address: 192.168.0.6
+    expose:
+      - "53"
+    container_name: soa
+
+  intranet:
+    build:
+      context: ./ServicesInternes/intranet
+      dockerfile: Dockerfile
+    networks:
+      local_network:
+        ipv4_address: 192.168.0.3
+    expose:
+      - "80"
+    container_name: intranet
+
+  samba:
+    build:
+      context: ./ServicesInternes/samba
+      dockerfile: Dockerfile
+    networks:
+      local_network:
+        ipv4_address: 192.168.0.4
+    expose:
+      - "139"
+    container_name: samba_container
+
+  secretariat:
+    build:
+      context: ./ServicesInternes/user/secretariat
+      dockerfile: Dockerfile
+    networks:
+      local_network:
+        ipv4_address: 192.168.0.101
+    container_name: secretariat
+
+  compta:
+    build:
+      context: ./ServicesInternes/user/compta
+      dockerfile: Dockerfile
+    networks:
+      local_network:
+        ipv4_address: 192.168.0.102
+    container_name: compta
+
+  direction:
+    build:
+      context: ./ServicesInternes/user/direction
+      dockerfile: Dockerfile
+    networks:
+      local_network:
+        ipv4_address: 192.168.0.103
+    container_name: direction
+
+  atelier:
+    build:
+      context: ./ServicesInternes/user/atelier
+      dockerfile: Dockerfile
+    networks:
+      local_network:
+        ipv4_address: 192.168.0.104
+    container_name: atelier
+
+networks:
+  local_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/24

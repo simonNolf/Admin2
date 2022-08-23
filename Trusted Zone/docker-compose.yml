@@ -1,5 +1,10 @@
 version: '3.3'
 
+secrets:
+  root_password:
+    file: ./database/root_password.txt
+  website_password:
+    file: ./database/website_password.txt
 
 services:
 
@@ -10,10 +15,13 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     ports:
       - 3306:3306/tcp
+    secrets:
+      - root_password
+      - website_password
     environment:
-      MYSQL_ROOT_PASSWORD: Password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/root_password
       MYSQL_USER: website
-      MYSQL_PASSWORD: Password
+      MYSQL_PASSWORD_FILE: /run/secrets/website_password
     container_name: database
 
   resolver:
