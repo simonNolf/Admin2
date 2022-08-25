@@ -14,6 +14,22 @@ RUN apt-get install smbclient -y
 RUN apt install cifs-utils -y 
 RUN apt install lynx -y 
 
+RUN groupadd direction
+RUN groupadd secretariat
+RUN groupadd compta
+RUN groupadd atelier
+
+RUN useradd -p samba direction1
+RUN useradd -p samba secretariat1
+RUN useradd -p samba compta1
+RUN useradd -p samba atelier1
+
+RUN usermod -aG direction direction1
+RUN usermod -aG secretariat secretariat1
+RUN usermod -aG compta compta1
+RUN usermod -aG atelier atelier1
+
+
 COPY ./smb.conf /etc/samba/smb.conf
 COPY ./shares.conf /etc/samba/shares.conf
 

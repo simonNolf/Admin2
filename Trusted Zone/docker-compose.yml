@@ -1,4 +1,4 @@
-version: '3.3'
+version: "3.3"
 
 secrets:
   root_password:
@@ -31,7 +31,7 @@ services:
     networks:
       local_network:
         ipv4_address: 192.168.0.5
-    container_name: resolv
+    container_name: resolver
 
   soa_interne:
     build:
@@ -40,9 +40,9 @@ services:
     networks:
       local_network:
         ipv4_address: 192.168.0.6
+    container_name: soa
     expose:
       - "53"
-    container_name: soa
 
   intranet:
     build:
@@ -64,12 +64,14 @@ services:
         ipv4_address: 192.168.0.4
     expose:
       - "139"
-    container_name: samba_container
+    container_name: samba
 
   secretariat:
     build:
       context: ./ServicesInternes/user/secretariat
       dockerfile: Dockerfile
+    volumes:
+      - ./ServicesInternes/user/resolv.conf:/etc/resolv.conf
     networks:
       local_network:
         ipv4_address: 192.168.0.101
@@ -79,6 +81,8 @@ services:
     build:
       context: ./ServicesInternes/user/compta
       dockerfile: Dockerfile
+    volumes:
+      - ./ServicesInternes/user/resolv.conf:/etc/resolv.conf
     networks:
       local_network:
         ipv4_address: 192.168.0.102
@@ -88,6 +92,8 @@ services:
     build:
       context: ./ServicesInternes/user/direction
       dockerfile: Dockerfile
+    volumes:
+      - ./ServicesInternes/user/resolv.conf:/etc/resolv.conf
     networks:
       local_network:
         ipv4_address: 192.168.0.103
@@ -97,6 +103,8 @@ services:
     build:
       context: ./ServicesInternes/user/atelier
       dockerfile: Dockerfile
+    volumes:
+      - ./ServicesInternes/user/resolv.conf:/etc/resolv.conf
     networks:
       local_network:
         ipv4_address: 192.168.0.104
@@ -108,3 +116,27 @@ networks:
       driver: default
       config:
         - subnet: 192.168.0.0/24
+
+  net_Secretariat:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24
+
+  net_Compta:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.2.0/24
+
+  net_Direction:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.3.0/24
+
+  net_Atelier:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.4.0/24
