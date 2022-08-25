@@ -11,7 +11,7 @@ $TTL 86400 ; 1 day
 @               IN      NS      ns.intranet.woodytoys.
 
 ;
-ns              IN      A       192.168.0.1
+ns              IN      A       192.168.0.6
 
 www             IN      A       192.168.0.3
 samba           IN      A       192.168.0.4
