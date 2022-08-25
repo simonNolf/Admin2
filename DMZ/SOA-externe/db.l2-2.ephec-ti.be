@@ -9,11 +9,10 @@ $TTL	3600
 	86400 )    ; minimum TTL of 1 day
 
 ;Nom de serveur faisant autoriter sur le domaine l2-2.ephec-ti.be.
-@      IN      NS      ns.l2-2.ephec-ti.be.
-
+@      	IN      NS      ns.l2-2.ephec-ti.be.
 
 ;Le nom de mon serveur assigner à son IP
-ns			IN	A	188.166.60.206;
+ns	IN	A	188.166.60.206;
 
 ;Server Web
 b2b	IN	A	188.166.60.206;

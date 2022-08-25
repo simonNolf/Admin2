@@ -2,7 +2,7 @@
 
 <?php
     # Connexion à la base de données
-    $db= mysqli_connect('206.189.57.193:3306','website','yterza','dbwoody') or die('Erreur de connection!');
+    $db= mysqli_connect('206.189.57.193:3306','website','ytreza','dbwoody') or die('Erreur de connection!');
 ?>
 
 <html>
