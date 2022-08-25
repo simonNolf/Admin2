@@ -11,7 +11,7 @@ COPY index.php /var/www/html/index.php
 COPY intranet.conf /etc/apache2/sites-available/intranet.conf
 
 RUN a2enmod ssl
-RUN openssl req -new -x509 -days 365 -nodes -out /etc/ssl/certs/intranet.crt -keyout /etc/ssl/private/intranet.key
+RUN openssl req -new -x509 -subj "/C=BE/ST=Brabant-wallon/L=Louvain-La-Neuve/O=Ephec/OU=IT/CN=www.intranet.woodytoys" -days 365 -nodes -out /etc/ssl/certs/intranet.crt -keyout /etc/ssl/private/intranet.key
 
 # activer server apache
 RUN a2dissite 000-default.conf
